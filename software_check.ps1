@@ -7,6 +7,10 @@ $Computers = "COAC6S8K32", "COA26SQHQ2", "COA26SSHQ2"
 
 foreach($Computer in $Computers) {
     $Installed = ((Get-WMIObject -ComputerName $Computer -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Name).Length -ne 0
-    Write-Host($Installed)
+    if($Installed) {
+        Write-Host($programName + " is installed")
+    } else {
+        Write-Host($programName + " is NOT installed")
+    }
 }
 
