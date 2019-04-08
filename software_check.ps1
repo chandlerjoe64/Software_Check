@@ -1,4 +1,6 @@
-﻿function Software_Check($computer, $programName ) {
+﻿#Function originally copied from https://www.morgantechspace.com/2018/02/check-if-software-program-is-installed-powershell.html
+
+function Software_Check($computer, $programName ) {
 $wmi_check = (Get-WMIObject -ComputerName $computer -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Length -gt 0
 return $wmi_check;
 }
