@@ -6,7 +6,7 @@ $programName = "LastPass"
 $Computers = "COAC6S8K32", "COA26SQHQ2", "COA26SSHQ2"
 
 foreach($Computer in $Computers) {
-    Write-Host($Computer)
+    $Installed = ((Get-WMIObject -ComputerName $Computer -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Name).Length -ne 0
+    Write-Host($Installed)
 }
 
-#((Get-WMIObject -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Name).Length -ne 0
