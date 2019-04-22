@@ -1,16 +1,16 @@
 ﻿#Specify the program for which we are checking
 $programName = "LastPass"
 
-#DEBUG
-#TODO replace with read-in values for computers in the domain
-$Computers = "COAC6S8K32", "COA26SQHQ2", "COA26SSHQ2"
+$Computers = Import-CSV "Devices.csv"
 
 foreach($Computer in $Computers) {
-    $Installed = ((Get-WMIObject -ComputerName $Computer -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Name).Length -ne 0
+    $Installed = ((Get-WMIObject -ComputerName $Computer.Computer -Query "SELECT * FROM Win32_Product Where Name Like '%$programName%'").Name).Length -ne 0
     if($Installed) {
-        Write-Host($programName + " is installed")
+        Write-Host($programName + " is installed on host " + $Computer.Computer)
     } else {
-        Write-Host($programName + " is NOT installed")
+        Write-Host($programName + " is NOT installed on host " + $Computer.Computer)
     }
+    $Computer.'Program Installed' = $Installed
 }
 
+Echo $Computers | Export-CSV "Rewrite_debug.csv" -NoTypeInformation
