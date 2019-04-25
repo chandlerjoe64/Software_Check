@@ -1,4 +1,5 @@
-"Computer","Description","Checked","Program Installed"
-"COAC6S8K32","Joe's Computer","False","True"
-"COA26SQHQ2","KVM PC ONE","False","False"
-"COA26SSHQ2","KVM PC TWO","False","False"
+Computer,Description,Checked,Program Installed
+COAC6S8K32,Joe's Computer,FALSE,
+COA26SQHQ2,KVM PC ONE,FALSE,
+COA26SSHQ2,KVM PC TWO,FALSE,
+COAXXXXXXX,FAKE COMPUTER,FALSE,
